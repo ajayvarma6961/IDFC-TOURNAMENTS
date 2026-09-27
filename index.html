@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IDFC ESPORTS - Official Free Fire MAX Tournament Platform. Compete, track live rankings, view top teams & players, and join official esports championships.">
+    <title>IDFC ESPORTS - Compete. Dominate. Become Champion.</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header class="header" id="mainHeader">
+        <div class="container navbar">
+            <a href="#home" class="brand-logo" onclick="switchSection('home')">
+                <span class="logo-badge">IDFC</span>
+                <div class="logo-text">
+                    <span class="brand-name">IDFC ESPORTS</span>
+                    <span class="brand-subtitle">TOURNAMENT PLATFORM</span>
+                </div>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" onclick="switchSection('home')">Home</a></li>
+                <li><a href="#tournaments" class="nav-link" onclick="switchSection('tournaments')">Tournaments</a></li>
+                <li><a href="#mvp" class="nav-link" onclick="switchSection('mvp')">MVP Showcase</a></li>
+                <li><a href="#leaderboard" class="nav-link" onclick="switchSection('leaderboard')">Leaderboard</a></li>
+                <li><a href="#teams" class="nav-link" onclick="switchSection('teams')">Teams</a></li>
+                <li><a href="#players" class="nav-link" onclick="switchSection('players')">Players</a></li>
+                <li><a href="#matches" class="nav-link" onclick="switchSection('matches')">Matches</a></li>
+                <li><a href="#prizes" class="nav-link" onclick="switchSection('prizes')">Prizes</a></li>
+                <li><a href="#news" class="nav-link" onclick="switchSection('news')">News</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <button class="btn-search" onclick="openSearchModal()">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+                <button class="btn-admin-login" id="adminLoginBtn" onclick="openAdminModal()">
+                    <i class="fa-solid fa-user-shield"></i> Admin Login
+                </button>
+                <button class="hamburger" id="hamburgerBtn" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="mainContent">
+
+        <!-- 1. HERO SECTION -->
+        <section id="home" class="hero-section page-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-tag">
+                        <span class="pulse-dot"></span>
+                        IDFC ESPORTS OFFICIAL CHAMPIONSHIP
+                    </div>
+                    <h1 class="hero-title">
+                        COMPETE.<br>DOMINATE.<br>
+                        <span>BECOME CHAMPION.</span>
+                    </h1>
+                    <div class="hero-subtitle">INDIA'S PREMIER COMPETITIVE GAMING PLATFORM</div>
+                    <p class="hero-desc">India's competitive gaming platform for tournaments, teams and players. Join elite Free Fire squad battles, track live rankings, and fight for massive prize pools.</p>
+                    <div class="hero-cta">
+                        <button class="btn-primary" onclick="openRegistrationModal('tourney-2')">
+                            JOIN TOURNAMENT <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button class="btn-outline" onclick="switchSection('tournaments')">
+                            VIEW TOURNAMENTS <i class="fa-solid fa-trophy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- HERO VISUAL COMPOSITION & LIVE CARD -->
+                <div class="hero-visual-wrapper">
+                    <div class="hero-visual-bg-glow"></div>
+                    
+                    <div class="hero-card" id="heroLiveCard">
+                        <div class="card-header-badge">
+                            <span class="live-indicator">
+                                <span class="live-dot"></span> LIVE TOURNAMENT
+                            </span>
+                            <span style="font-size: 0.85rem; color: var(--secondary); font-weight: 800; font-family: var(--font-heading);">SEASON 4 GRAND FINALS</span>
+                        </div>
+                        <h3 class="tournament-name-hero" id="heroTourneyTitle">IDFC BATTLE ARENA SEASON 4</h3>
+                        <div class="hero-stats-grid">
+                            <div class="hero-stat-box">
+                                <div class="hero-stat-label">Prize Pool</div>
+                                <div class="hero-stat-val prize" id="heroPrizePool">₹1,00,000</div>
+                            </div>
+                            <div class="hero-stat-box">
+                                <div class="hero-stat-label">Participating Squads</div>
+                                <div class="hero-stat-val">18 / 24</div>
+                            </div>
+                            <div class="hero-stat-box">
+                                <div class="hero-stat-label">Format</div>
+                                <div class="hero-stat-val" style="font-size: 1rem; margin-top: 4px;">BATTLE ROYALE SQUAD</div>
+                            </div>
+                            <div class="hero-stat-box">
+                                <div class="hero-stat-label">Status</div>
+                                <div class="hero-stat-val" style="color: var(--primary); font-size: 1.1rem; margin-top: 4px;">LIVE BROADCAST</div>
+                            </div>
+                        </div>
+
+                        <!-- Countdown Timer -->
+                        <div class="countdown-container">
+                            <div class="countdown-title"><i class="fa-solid fa-stopwatch"></i> NEXT MATCH STARTS IN</div>
+                            <div class="timer-boxes">
+                                <div class="time-box">
+                                    <div class="time-num" id="cd-hours">02</div>
+                                    <div class="time-unit">Hours</div>
+                                </div>
+                                <div class="time-box">
+                                    <div class="time-num" id="cd-mins">45</div>
+                                    <div class="time-unit">Mins</div>
+                                </div>
+                                <div class="time-box">
+                                    <div class="time-num" id="cd-secs">18</div>
+                                    <div class="time-unit">Secs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. STATISTICS STRIP (NEW POWERFUL COUNTER STRIP) -->
+        <section class="stats-strip-section">
+            <div class="container stats-strip-grid">
+                <div class="stats-strip-item">
+                    <div class="stats-strip-num">10,000+</div>
+                    <div class="stats-strip-label">ACTIVE PLAYERS</div>
+                </div>
+                <div class="stats-strip-item">
+                    <div class="stats-strip-num">500+</div>
+                    <div class="stats-strip-label">REGISTERED TEAMS</div>
+                </div>
+                <div class="stats-strip-item">
+                    <div class="stats-strip-num">100+</div>
+                    <div class="stats-strip-label">TOURNAMENTS HELD</div>
+                </div>
+                <div class="stats-strip-item">
+                    <div class="stats-strip-num">₹10L+</div>
+                    <div class="stats-strip-label">PRIZES DISTRIBUTED</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PLAYER OF THE TOURNAMENT (MVP SPOTLIGHT) -->
+        <section id="mvp" class="section mvp-section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-crown"></i> OFFICIAL MVP SPOTLIGHT</span>
+                    <h2 class="section-title">PLAYER OF THE TOURNAMENT</h2>
+                    <div class="section-subtitle-text">Meet the dominant force of IDFC Esports Season 4</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="mvp-card-large" id="mvpShowcaseCard">
+                    <!-- Dynamic rendering via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. LIVE & UPCOMING TOURNAMENTS -->
+        <section id="tournaments" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-crosshairs"></i> COMPETITIVE ARENA</span>
+                    <h2 class="section-title">TOURNAMENTS</h2>
+                    <div class="section-subtitle-text">Choose your battlefield and battle for national championship glory</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="match-tabs" style="margin-bottom: 40px;">
+                    <button class="match-tab-btn active" onclick="filterTournaments('ALL', this)">All Tournaments</button>
+                    <button class="match-tab-btn" onclick="filterTournaments('LIVE', this)">Live</button>
+                    <button class="match-tab-btn" onclick="filterTournaments('UPCOMING', this)">Upcoming</button>
+                    <button class="match-tab-btn" onclick="filterTournaments('COMPLETED', this)">Completed</button>
+                </div>
+
+                <div class="tournaments-grid" id="tournamentsGrid">
+                    <!-- Dynamic Tournament Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. LEADERBOARD SECTION -->
+        <section id="leaderboard" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-trophy"></i> SEASON STANDINGS</span>
+                    <h2 class="section-title">TEAM LEADERBOARD</h2>
+                    <div class="section-subtitle-text">Who's dominating the competition?</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="leaderboard-controls">
+                    <div class="search-input-wrap">
+                        <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+                        <input type="text" id="leaderboardSearchInput" placeholder="Search team by name..." oninput="handleLeaderboardSearch(this.value)">
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-card-secondary" onclick="sortLeaderboard('points')"><i class="fa-solid fa-arrow-down-short-wide"></i> Points</button>
+                        <button class="btn-card-secondary" onclick="sortLeaderboard('kills')"><i class="fa-solid fa-crosshairs"></i> Kills</button>
+                        <button class="btn-card-secondary" onclick="sortLeaderboard('booyahs')"><i class="fa-solid fa-crown"></i> Booyahs</button>
+                    </div>
+                </div>
+
+                <!-- Podium & Table Render Container -->
+                <div id="leaderboardPodiumContainer"></div>
+
+                <div class="leaderboard-table-container">
+                    <table class="table-esports">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Matches</th>
+                                <th>Booyahs</th>
+                                <th>Kills</th>
+                                <th>Placement Pts</th>
+                                <th>Kill Pts</th>
+                                <th>Total Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardTableBody">
+                            <!-- Dynamic Leaderboard Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PLAYERS RANKING -->
+        <section id="players" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-user-ninja"></i> INDIVIDUAL STATS</span>
+                    <h2 class="section-title">TOP PLAYERS RANKING</h2>
+                    <div class="section-subtitle-text">Meet the champions and sniper legends</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="leaderboard-table-container">
+                    <table class="table-esports">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>Kills</th>
+                                <th>Total Damage</th>
+                                <th>Headshot %</th>
+                                <th>Booyahs</th>
+                                <th>MVP Points</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playersTableBody">
+                            <!-- Dynamic Players Rows -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. TEAMS SHOWCASE -->
+        <section id="teams" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> ESPORTS ROSTERS</span>
+                    <h2 class="section-title">PARTICIPATING TEAMS</h2>
+                    <div class="section-subtitle-text">The official Free Fire MAX organization rosters</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="teams-grid" id="teamsGrid">
+                    <!-- Dynamic Team Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. MATCHES SECTION -->
+        <section id="matches" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-calendar-days"></i> FIXTURES & TIMELINE</span>
+                    <h2 class="section-title">MATCHES</h2>
+                    <div class="section-subtitle-text">Track every battle live and view completed results</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="match-tabs">
+                    <button class="match-tab-btn active" onclick="filterMatches('LIVE', this)">Live Matches</button>
+                    <button class="match-tab-btn" onclick="filterMatches('UPCOMING', this)">Upcoming</button>
+                    <button class="match-tab-btn" onclick="filterMatches('COMPLETED', this)">Completed</button>
+                </div>
+
+                <div class="matches-grid" id="matchesGrid">
+                    <!-- Dynamic Match Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. PRIZE POOL BREAKDOWN -->
+        <section id="prizes" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-sack-dollar"></i> REWARDS & RECOGNITION</span>
+                    <h2 class="section-title">CHAMPIONSHIP PRIZE POOL</h2>
+                    <div class="section-subtitle-text">Guaranteed cash prizes for top placements and MVP achievements</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="prizes-grid" id="prizesGrid">
+                    <!-- Dynamic Prize Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. LATEST NEWS & ANNOUNCEMENTS -->
+        <section id="news" class="section page-section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-tag"><i class="fa-solid fa-newspaper"></i> ANNOUNCEMENTS & COVERAGE</span>
+                    <h2 class="section-title">LATEST FROM IDFC</h2>
+                    <div class="section-subtitle-text">Latest news, tournament recaps, and patch breakdowns</div>
+                    <div class="section-title-line"></div>
+                </div>
+
+                <div class="news-grid" id="newsGrid">
+                    <!-- Dynamic News Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. ADMIN DASHBOARD SECTION -->
+        <section id="admin" class="section admin-section page-section" style="display: none;">
+            <div class="container">
+                <div class="section-title-wrap" style="text-align: left; margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+                        <div>
+                            <span class="section-tag"><i class="fa-solid fa-sliders"></i> CONTROL CENTER</span>
+                            <h2 class="section-title">IDFC ADMIN DASHBOARD</h2>
+                        </div>
+                        <div>
+                            <button class="btn-card-secondary" onclick="resetDefaultsAdmin()"><i class="fa-solid fa-rotate-left"></i> Reset Demo Data</button>
+                            <button class="btn-primary" style="margin-left: 10px;" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                        </div>
+                    </div>
+                    <div class="section-title-line" style="margin: 14px 0 0;"></div>
+                </div>
+
+                <div class="admin-layout">
+                    <!-- Sidebar Navigation -->
+                    <aside class="admin-sidebar">
+                        <ul class="admin-nav">
+                            <li class="admin-nav-item active" onclick="switchAdminTab('dash', this)"><i class="fa-solid fa-chart-pie"></i> Dashboard</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('tournaments', this)"><i class="fa-solid fa-trophy"></i> Tournaments</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('teams', this)"><i class="fa-solid fa-users"></i> Teams</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('players', this)"><i class="fa-solid fa-user-ninja"></i> Players</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('matches', this)"><i class="fa-solid fa-crosshairs"></i> Matches</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('mvp', this)"><i class="fa-solid fa-crown"></i> Set MVP</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('prizes', this)"><i class="fa-solid fa-sack-dollar"></i> Prizes</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('news', this)"><i class="fa-solid fa-newspaper"></i> News</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('registrations', this)"><i class="fa-solid fa-clipboard-list"></i> Registrations</li>
+                        </ul>
+                    </aside>
+
+                    <!-- Main Admin View Area -->
+                    <main class="admin-main-view" id="adminMainView">
+                        <!-- Content dynamically loaded via app.js -->
+                    </main>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="brand-logo" onclick="switchSection('home')">
+                        <span class="logo-badge">IDFC</span>
+                        <div class="logo-text">
+                            <span class="brand-name">IDFC ESPORTS</span>
+                            <span class="brand-subtitle">TOURNAMENT PLATFORM</span>
+                        </div>
+                    </a>
+                    <p>India's premier Free Fire MAX esports tournament ecosystem. Compete against top squads, track live rankings, and earn championship rewards.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home" onclick="switchSection('home')">Home</a></li>
+                        <li><a href="#tournaments" onclick="switchSection('tournaments')">Tournaments</a></li>
+                        <li><a href="#leaderboard" onclick="switchSection('leaderboard')">Leaderboard</a></li>
+                        <li><a href="#teams" onclick="switchSection('teams')">Teams</a></li>
+                        <li><a href="#players" onclick="switchSection('players')">Players</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="#matches" onclick="switchSection('matches')">Matches</a></li>
+                        <li><a href="#prizes" onclick="switchSection('prizes')">Prize Pool</a></li>
+                        <li><a href="#news" onclick="switchSection('news')">Latest News</a></li>
+                        <li><a href="#" onclick="openAdminModal()">Admin Panel</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon-btn"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" class="social-icon-btn"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-icon-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="social-icon-btn"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IDFC Esports. All Rights Reserved. Built for Free Fire MAX Competitive Community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODALS CONTAINER SYSTEM -->
+
+    <!-- 1. TOURNAMENT REGISTRATION MODAL -->
+    <div class="modal-overlay" id="regModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-file-pen"></i> Team Registration</h3>
+                <button class="modal-close" onclick="closeModal('regModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registrationForm" onsubmit="handleRegistrationSubmit(event)">
+                    <input type="hidden" id="regTournamentId">
+                    <div class="form-group">
+                        <label class="form-label">Tournament</label>
+                        <input type="text" id="regTournamentTitle" class="form-control" readonly>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Team Name *</label>
+                            <input type="text" id="regTeamName" class="form-control" required placeholder="e.g. Phoenix Gaming">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Captain Name *</label>
+                            <input type="text" id="regCaptainName" class="form-control" required placeholder="e.g. Aarav Patel">
+                        </div>
+                    </div>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" id="regPhone" class="form-control" required placeholder="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" id="regEmail" class="form-control" required placeholder="captain@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Player 1 (In-Game Name & UID) *</label>
+                        <input type="text" id="regPlayer1" class="form-control" required placeholder="Name (UID: 12345678)">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Player 2 (In-Game Name & UID) *</label>
+                        <input type="text" id="regPlayer2" class="form-control" required placeholder="Name (UID: 12345678)">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Player 3 (In-Game Name & UID) *</label>
+                        <input type="text" id="regPlayer3" class="form-control" required placeholder="Name (UID: 12345678)">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Player 4 (In-Game Name & UID) *</label>
+                        <input type="text" id="regPlayer4" class="form-control" required placeholder="Name (UID: 12345678)">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Substitute Player (Optional)</label>
+                        <input type="text" id="regSub" class="form-control" placeholder="Name (UID: 12345678)">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Submit Registration</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. ADMIN LOGIN MODAL -->
+    <div class="modal-overlay" id="adminLoginModal">
+        <div class="modal-container" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-lock"></i> Admin Portal Login</h3>
+                <button class="modal-close" onclick="closeModal('adminLoginModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="background: rgba(255, 136, 0, 0.12); border: 1px solid var(--secondary); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 22px; text-align: center; font-size: 0.9rem;">
+                    <strong>Demo Admin Credentials:</strong><br>
+                    Username: <code style="color: var(--gold);">admin</code> | Password: <code style="color: var(--gold);">admin123</code>
+                </div>
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" id="adminUsername" class="form-control" required value="admin">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="adminPassword" class="form-control" required value="admin123">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login to Admin Panel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. GLOBAL SEARCH MODAL -->
+    <div class="modal-overlay" id="searchModal">
+        <div class="modal-container" style="max-width: 720px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-magnifying-glass"></i> Search Platform</h3>
+                <button class="modal-close" onclick="closeModal('searchModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-wrap" style="max-width: 100%; margin-bottom: 22px;">
+                    <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
+                    <input type="text" id="globalSearchInput" placeholder="Search teams, players, tournaments, news..." oninput="handleGlobalSearch(this.value)">
+                </div>
+                <div id="globalSearchResults" style="max-height: 400px; overflow-y: auto;">
+                    <p style="text-align: center; color: var(--text-muted);">Type at least 2 characters to search...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. GENERIC DETAIL VIEW MODAL -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal-container" style="max-width: 720px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="detailModalTitle">Details</h3>
+                <button class="modal-close" onclick="closeModal('detailModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="detailModalBody">
+                <!-- Content dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ADMIN CRUD FORM MODAL -->
+    <div class="modal-overlay" id="adminCrudModal">
+        <div class="modal-container" style="max-width: 720px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="adminCrudModalTitle">Manage Item</h3>
+                <button class="modal-close" onclick="closeModal('adminCrudModal')">&times;</button>
+            </div>
+            <div class="modal-body" id="adminCrudModalBody">
+                <!-- Form dynamically rendered based on active entity -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATIONS CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- SCRIPT INCLUSIONS -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
