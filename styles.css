@@ -877,6 +877,36 @@ input, select, textarea {
     color: var(--text-secondary);
 }
 
+.badge-status.pending {
+    background: rgba(245, 158, 11, 0.18);
+    border: 1px solid var(--mvp-gold);
+    color: var(--mvp-gold);
+}
+
+.badge-status.approved {
+    background: rgba(34, 197, 94, 0.18);
+    border: 1px solid var(--live-success);
+    color: var(--live-success);
+}
+
+.badge-status.rejected {
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+.badge-status.published {
+    background: rgba(0, 229, 255, 0.15);
+    border: 1px solid var(--primary-accent);
+    color: var(--cyan-highlight);
+}
+
+.badge-status.unpublished {
+    background: rgba(148, 163, 184, 0.12);
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+}
+
 .tournament-card-title {
     font-family: var(--font-heading);
     font-size: 1.75rem;
@@ -1315,131 +1345,6 @@ input, select, textarea {
     font-family: var(--font-heading);
     font-weight: 800;
 }
-
-/* PRIZES GRID */
-.prizes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 28px;
-}
-
-.prize-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 36px 26px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: var(--transition);
-}
-
-.prize-card:hover {
-    transform: translateY(-6px);
-}
-
-.prize-card.gold-card {
-    border-color: var(--mvp-gold);
-    box-shadow: 0 0 30px var(--gold-glow);
-    background: linear-gradient(180deg, rgba(245, 158, 11, 0.1) 0%, var(--bg-card) 100%);
-}
-
-.prize-card.silver-card {
-    border-color: var(--silver);
-    background: linear-gradient(180deg, rgba(226, 232, 240, 0.08) 0%, var(--bg-card) 100%);
-}
-
-.prize-card.bronze-card {
-    border-color: var(--bronze);
-    background: linear-gradient(180deg, rgba(205, 127, 50, 0.08) 0%, var(--bg-card) 100%);
-}
-
-.prize-rank-badge {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.15rem;
-    color: var(--cyan-highlight);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-.prize-amount {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 3.2rem;
-    color: var(--mvp-gold);
-    line-height: 1;
-    margin-bottom: 14px;
-    text-shadow: 0 0 15px var(--gold-glow);
-}
-
-.prize-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: var(--text-primary);
-}
-
-.prize-perk {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-/* NEWS SECTION */
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 32px;
-}
-
-.news-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    transition: var(--transition);
-}
-
-.news-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-accent);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-}
-
-.news-img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.news-body {
-    padding: 26px;
-}
-
-.news-date {
-    font-size: 0.85rem;
-    color: var(--cyan-highlight);
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.news-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-    line-height: 1.25;
-    color: var(--text-primary);
-}
-
-.news-desc {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
 /* FOOTER UI */
 .footer {
     background: #050812;

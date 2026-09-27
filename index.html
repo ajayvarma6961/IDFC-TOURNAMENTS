@@ -28,17 +28,18 @@
                 <li><a href="#tournaments" class="nav-link" onclick="switchSection('tournaments')">Tournaments</a></li>
                 <li><a href="#mvp" class="nav-link" onclick="switchSection('mvp')">MVP Showcase</a></li>
                 <li><a href="#leaderboard" class="nav-link" onclick="switchSection('leaderboard')">Leaderboard</a></li>
-                <li><a href="#teams" class="nav-link" onclick="switchSection('teams')">Teams</a></li>
-                <li><a href="#players" class="nav-link" onclick="switchSection('players')">Players</a></li>
                 <li><a href="#matches" class="nav-link" onclick="switchSection('matches')">Matches</a></li>
-                <li><a href="#prizes" class="nav-link" onclick="switchSection('prizes')">Prizes</a></li>
-                <li><a href="#news" class="nav-link" onclick="switchSection('news')">News</a></li>
+                <li><a href="#register" class="nav-link" onclick="switchSection('register')">Register</a></li>
+                <li><a href="#check-status" class="nav-link" onclick="openCheckRegModal()">Check Status</a></li>
             </ul>
 
             <div class="header-actions">
                 <button class="btn-search" onclick="openSearchModal()">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>Search</span>
+                </button>
+                <button class="btn-card-secondary" id="playerLoginBtn" onclick="openPlayerAuthModal()" style="padding: 8px 14px; font-size: 0.85rem;">
+                    <i class="fa-solid fa-user"></i> Player Login
                 </button>
                 <button class="btn-admin-login" id="adminLoginBtn" onclick="openAdminModal()">
                     <i class="fa-solid fa-user-shield"></i> Admin Login
@@ -68,63 +69,60 @@
                         <span>BECOME CHAMPION.</span>
                     </h1>
                     <div class="hero-subtitle">INDIA'S PREMIER COMPETITIVE GAMING PLATFORM</div>
-                    <p class="hero-desc">India's competitive gaming platform for tournaments, teams and players. Join elite Free Fire squad battles, track live rankings, and fight for massive prize pools.</p>
+                    <p class="hero-desc">India's competitive gaming platform for Free Fire tournaments. Join elite squad battles, track live rankings, and fight for massive prize pools.</p>
                     <div class="hero-cta">
-                        <button class="btn-primary" onclick="openRegistrationModal('tourney-2')">
-                            JOIN TOURNAMENT <i class="fa-solid fa-arrow-right"></i>
+                        <button class="btn-primary" onclick="switchSection('tournaments')">
+                            EXPLORE TOURNAMENTS <i class="fa-solid fa-arrow-right"></i>
                         </button>
                         <button class="btn-outline" onclick="switchSection('tournaments')">
                             VIEW TOURNAMENTS <i class="fa-solid fa-trophy"></i>
                         </button>
+                        <button class="btn-card-secondary" onclick="openCheckRegModal()" style="border: 1px solid var(--primary-accent); padding: 12px 20px;">
+                            <i class="fa-solid fa-magnifying-glass"></i> CHECK STATUS
+                        </button>
                     </div>
                 </div>
 
-                <!-- HERO VISUAL COMPOSITION & LIVE CARD -->
+                <!-- HERO PLATFORM SHOWCASE CARD -->
                 <div class="hero-visual-wrapper">
                     <div class="hero-visual-bg-glow"></div>
                     
-                    <div class="hero-card" id="heroLiveCard">
+                    <div class="hero-card">
                         <div class="card-header-badge">
-                            <span class="live-indicator">
-                                <span class="live-dot"></span> LIVE TOURNAMENT
+                            <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--cyan-accent); font-family: var(--font-heading); letter-spacing: 1px;">
+                                <i class="fa-solid fa-shield-halved"></i> OFFICIAL ESPORTS ARENA
                             </span>
-                            <span style="font-size: 0.85rem; color: var(--secondary); font-weight: 800; font-family: var(--font-heading);">SEASON 4 GRAND FINALS</span>
                         </div>
-                        <h3 class="tournament-name-hero" id="heroTourneyTitle">IDFC BATTLE ARENA SEASON 4</h3>
-                        <div class="hero-stats-grid">
-                            <div class="hero-stat-box">
-                                <div class="hero-stat-label">Prize Pool</div>
-                                <div class="hero-stat-val prize" id="heroPrizePool">₹1,00,000</div>
+                        <h3 class="tournament-name-hero" style="font-size: 1.8rem; margin-bottom: 20px;">IDFC ESPORTS ECOSYSTEM</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06);">
+                                <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(0,240,255,0.12); display: flex; align-items: center; justify-content: center; color: var(--cyan-accent); font-size: 1.2rem;">
+                                    <i class="fa-solid fa-trophy"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 700; color: #fff; font-size: 1rem;">Structured Tournaments</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted);">Organized Free Fire MAX brackets & schedules</div>
+                                </div>
                             </div>
-                            <div class="hero-stat-box">
-                                <div class="hero-stat-label">Participating Squads</div>
-                                <div class="hero-stat-val">18 / 24</div>
-                            </div>
-                            <div class="hero-stat-box">
-                                <div class="hero-stat-label">Format</div>
-                                <div class="hero-stat-val" style="font-size: 1rem; margin-top: 4px;">BATTLE ROYALE SQUAD</div>
-                            </div>
-                            <div class="hero-stat-box">
-                                <div class="hero-stat-label">Status</div>
-                                <div class="hero-stat-val" style="color: var(--primary); font-size: 1.1rem; margin-top: 4px;">LIVE BROADCAST</div>
-                            </div>
-                        </div>
 
-                        <!-- Countdown Timer -->
-                        <div class="countdown-container">
-                            <div class="countdown-title"><i class="fa-solid fa-stopwatch"></i> NEXT MATCH STARTS IN</div>
-                            <div class="timer-boxes">
-                                <div class="time-box">
-                                    <div class="time-num" id="cd-hours">02</div>
-                                    <div class="time-unit">Hours</div>
+                            <div style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06);">
+                                <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(124,58,237,0.15); display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 1.2rem;">
+                                    <i class="fa-solid fa-key"></i>
                                 </div>
-                                <div class="time-box">
-                                    <div class="time-num" id="cd-mins">45</div>
-                                    <div class="time-unit">Mins</div>
+                                <div>
+                                    <div style="font-weight: 700; color: #fff; font-size: 1rem;">Secure Room Access</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted);">Protected custom room IDs & passwords</div>
                                 </div>
-                                <div class="time-box">
-                                    <div class="time-num" id="cd-secs">18</div>
-                                    <div class="time-unit">Secs</div>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.03); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06);">
+                                <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(34,197,94,0.12); display: flex; align-items: center; justify-content: center; color: #22c55e; font-size: 1.2rem;">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 700; color: #fff; font-size: 1rem;">Live Leaderboards</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted);">Real-time standings, kills & squad rankings</div>
                                 </div>
                             </div>
                         </div>
@@ -241,55 +239,6 @@
             </div>
         </section>
 
-        <!-- 6. PLAYERS RANKING -->
-        <section id="players" class="section page-section">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-user-ninja"></i> INDIVIDUAL STATS</span>
-                    <h2 class="section-title">TOP PLAYERS RANKING</h2>
-                    <div class="section-subtitle-text">Meet the champions and sniper legends</div>
-                    <div class="section-title-line"></div>
-                </div>
-
-                <div class="leaderboard-table-container">
-                    <table class="table-esports">
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Player</th>
-                                <th>Team</th>
-                                <th>Kills</th>
-                                <th>Total Damage</th>
-                                <th>Headshot %</th>
-                                <th>Booyahs</th>
-                                <th>MVP Points</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="playersTableBody">
-                            <!-- Dynamic Players Rows -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. TEAMS SHOWCASE -->
-        <section id="teams" class="section page-section">
-            <div class="container">
-                <div class="section-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> ESPORTS ROSTERS</span>
-                    <h2 class="section-title">PARTICIPATING TEAMS</h2>
-                    <div class="section-subtitle-text">The official Free Fire MAX organization rosters</div>
-                    <div class="section-title-line"></div>
-                </div>
-
-                <div class="teams-grid" id="teamsGrid">
-                    <!-- Dynamic Team Cards -->
-                </div>
-            </div>
-        </section>
-
         <!-- 8. MATCHES SECTION -->
         <section id="matches" class="section page-section">
             <div class="container">
@@ -312,34 +261,134 @@
             </div>
         </section>
 
-        <!-- 9. PRIZE POOL BREAKDOWN -->
-        <section id="prizes" class="section page-section">
+        <!-- 9. MY TOURNAMENTS SECTION -->
+        <section id="my-tournaments" class="section page-section" style="display: none;">
             <div class="container">
                 <div class="section-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-sack-dollar"></i> REWARDS & RECOGNITION</span>
-                    <h2 class="section-title">CHAMPIONSHIP PRIZE POOL</h2>
-                    <div class="section-subtitle-text">Guaranteed cash prizes for top placements and MVP achievements</div>
+                    <span class="section-tag"><i class="fa-solid fa-id-card"></i> PLAYER DASHBOARD</span>
+                    <h2 class="section-title">MY ENROLLED TOURNAMENTS</h2>
+                    <div class="section-subtitle-text">Track your registrations & access secret match room credentials</div>
                     <div class="section-title-line"></div>
                 </div>
 
-                <div class="prizes-grid" id="prizesGrid">
-                    <!-- Dynamic Prize Cards -->
+                <div id="myTournamentsContainer">
+                    <!-- Rendered via app.js -->
                 </div>
             </div>
         </section>
 
-        <!-- 10. LATEST NEWS & ANNOUNCEMENTS -->
-        <section id="news" class="section page-section">
+        <!-- 10. REGISTER SECTION BLOCK -->
+        <section id="register" class="section page-section" style="display: none;">
             <div class="container">
                 <div class="section-title-wrap">
-                    <span class="section-tag"><i class="fa-solid fa-newspaper"></i> ANNOUNCEMENTS & COVERAGE</span>
-                    <h2 class="section-title">LATEST FROM IDFC</h2>
-                    <div class="section-subtitle-text">Latest news, tournament recaps, and patch breakdowns</div>
+                    <span class="section-tag"><i class="fa-solid fa-file-pen"></i> OFFICIAL SQUAD REGISTRATION</span>
+                    <h2 class="section-title">TOURNAMENT REGISTRATION BLOCK</h2>
+                    <div class="section-subtitle-text">Enter your squad details below to secure your slot in official IDFC Esports Championships</div>
                     <div class="section-title-line"></div>
                 </div>
 
-                <div class="news-grid" id="newsGrid">
-                    <!-- Dynamic News Cards -->
+                <div style="max-width: 820px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--shadow-glow-cyan);">
+                    <form id="inlineRegistrationForm" onsubmit="handleInlineRegistrationSubmit(event)">
+                        <input type="hidden" id="inlineRegTournamentId">
+                        
+                        <div class="form-group" style="margin-bottom: 22px;">
+                            <label class="form-label" style="font-weight: 600; color: var(--cyan-highlight); font-size: 1.05rem;"><i class="fa-solid fa-trophy"></i> Select Tournament *</label>
+                            <select id="inlineRegTournamentSelect" class="form-control" required onchange="onInlineRegistrationTourneyChange(this.value)" style="background: rgba(0,0,0,0.6); font-size: 1rem; border-color: var(--cyan-highlight);">
+                                <!-- Populated dynamically via JS -->
+                            </select>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Applicant Full Name *</label>
+                                <input type="text" id="inlineRegFullName" class="form-control" required placeholder="e.g. Aarav Patel">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mobile Number *</label>
+                                <input type="tel" id="inlineRegPhone" class="form-control" required placeholder="10-digit mobile number (e.g. 9876543210)">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" id="inlineRegEmail" class="form-control" required placeholder="applicant@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Free Fire / Game UID *</label>
+                                <input type="text" id="inlineRegGameUid" class="form-control" required placeholder="e.g. 98124712">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">In-Game Name (IGN) *</label>
+                                <input type="text" id="inlineRegIgn" class="form-control" required placeholder="e.g. OP_Viper">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Team Name *</label>
+                                <input type="text" id="inlineRegTeamName" class="form-control" required placeholder="e.g. Phoenix Warriors">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Team Captain Name *</label>
+                                <input type="text" id="inlineRegCaptainName" class="form-control" required placeholder="e.g. Aarav Patel">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Number of Players</label>
+                                <input type="number" class="form-control" value="4" readonly style="opacity: 0.85;">
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(0, 229, 255, 0.05); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-sm); margin: 22px 0;">
+                            <h4 style="font-family: var(--font-heading); color: var(--cyan-highlight); font-size: 1rem; margin-bottom: 14px;"><i class="fa-solid fa-users"></i> SQUAD PLAYERS DETAILS</h4>
+                            <div class="form-group">
+                                <label class="form-label">Player 1 Details (In-Game Name & Game UID) *</label>
+                                <input type="text" id="inlineRegPlayer1" class="form-control" required placeholder="Player 1 IGN (UID: 12345678)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Player 2 Details (In-Game Name & Game UID) *</label>
+                                <input type="text" id="inlineRegPlayer2" class="form-control" required placeholder="Player 2 IGN (UID: 12345678)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Player 3 Details (In-Game Name & Game UID) *</label>
+                                <input type="text" id="inlineRegPlayer3" class="form-control" required placeholder="Player 3 IGN (UID: 12345678)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Player 4 Details (In-Game Name & Game UID) *</label>
+                                <input type="text" id="inlineRegPlayer4" class="form-control" required placeholder="Player 4 IGN (UID: 12345678)">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label">Substitute Player Details (Optional)</label>
+                                <input type="text" id="inlineRegSub" class="form-control" placeholder="Substitute IGN (UID: 87654321)">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label class="form-label">Alternate Contact / WhatsApp (Optional)</label>
+                                <input type="text" id="inlineRegAltContact" class="form-control" placeholder="Alternative Phone or WhatsApp">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Additional Info / Notes (Optional)</label>
+                                <input type="text" id="inlineRegAdditionalInfo" class="form-control" placeholder="Discord Tag / Device / Queries">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin: 18px 0 26px;">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-secondary); font-size: 0.92rem;">
+                                <input type="checkbox" id="inlineRegAgreeTerms" required style="width: 18px; height: 18px; accent-color: var(--cyan-highlight);">
+                                I confirm that all submitted squad details are accurate and agree to abide by the IDFC Esports Tournament Fair Play & Rules.
+                            </label>
+                        </div>
+
+                        <div style="display: flex; gap: 16px; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+                            <button type="button" class="btn-card-secondary" onclick="openCheckRegModal()"><i class="fa-solid fa-magnifying-glass"></i> Check Status</button>
+                            <button type="submit" class="btn-hero-primary" style="padding: 14px 32px; font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i> SUBMIT REGISTRATION</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -365,15 +414,15 @@
                     <!-- Sidebar Navigation -->
                     <aside class="admin-sidebar">
                         <ul class="admin-nav">
-                            <li class="admin-nav-item active" onclick="switchAdminTab('dash', this)"><i class="fa-solid fa-chart-pie"></i> Dashboard</li>
+                            <li class="admin-nav-item active" onclick="switchAdminTab('dash', this)"><i class="fa-solid fa-chart-pie"></i> Overview</li>
                             <li class="admin-nav-item" onclick="switchAdminTab('tournaments', this)"><i class="fa-solid fa-trophy"></i> Tournaments</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('teams', this)"><i class="fa-solid fa-users"></i> Teams</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('players', this)"><i class="fa-solid fa-user-ninja"></i> Players</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('matches', this)"><i class="fa-solid fa-crosshairs"></i> Matches</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('mvp', this)"><i class="fa-solid fa-crown"></i> Set MVP</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('prizes', this)"><i class="fa-solid fa-sack-dollar"></i> Prizes</li>
-                            <li class="admin-nav-item" onclick="switchAdminTab('news', this)"><i class="fa-solid fa-newspaper"></i> News</li>
                             <li class="admin-nav-item" onclick="switchAdminTab('registrations', this)"><i class="fa-solid fa-clipboard-list"></i> Registrations</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('rooms', this)"><i class="fa-solid fa-key"></i> Rooms</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('results', this)"><i class="fa-solid fa-calculator"></i> Results Entry</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('leaderboard', this)"><i class="fa-solid fa-list-ol"></i> Leaderboard</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('logs', this)"><i class="fa-solid fa-shield-halved"></i> Audit Logs</li>
+                            <li class="admin-nav-item" onclick="switchAdminTab('diagnostic', this)"><i class="fa-solid fa-stethoscope"></i> Database Diagnostic</li>
+                            <li class="admin-nav-item" style="margin-top: 15px; border-top: 1px solid var(--border-color); color: var(--danger);" onclick="adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
                         </ul>
                     </aside>
 
@@ -406,17 +455,17 @@
                     <ul class="footer-links">
                         <li><a href="#home" onclick="switchSection('home')">Home</a></li>
                         <li><a href="#tournaments" onclick="switchSection('tournaments')">Tournaments</a></li>
+                        <li><a href="#mvp" onclick="switchSection('mvp')">MVP Showcase</a></li>
                         <li><a href="#leaderboard" onclick="switchSection('leaderboard')">Leaderboard</a></li>
-                        <li><a href="#teams" onclick="switchSection('teams')">Teams</a></li>
-                        <li><a href="#players" onclick="switchSection('players')">Players</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="footer-title">Platform</h4>
                     <ul class="footer-links">
                         <li><a href="#matches" onclick="switchSection('matches')">Matches</a></li>
-                        <li><a href="#prizes" onclick="switchSection('prizes')">Prize Pool</a></li>
-                        <li><a href="#news" onclick="switchSection('news')">Latest News</a></li>
+                        <li><a href="#register" onclick="openRegistrationModal()">Register</a></li>
+                        <li><a href="#check-status" onclick="openCheckRegModal()">Check Status</a></li>
+                        <li><a href="#contactModal" onclick="openContactModal()">Support</a></li>
                         <li><a href="#" onclick="openAdminModal()">Admin Panel</a></li>
                     </ul>
                 </div>
@@ -440,60 +489,130 @@
 
     <!-- 1. TOURNAMENT REGISTRATION MODAL -->
     <div class="modal-overlay" id="regModal">
-        <div class="modal-container">
+        <div class="modal-container" style="max-width: 680px;">
             <div class="modal-header">
-                <h3 class="modal-title"><i class="fa-solid fa-file-pen"></i> Team Registration</h3>
+                <h3 class="modal-title"><i class="fa-solid fa-file-pen"></i> Squad Tournament Registration</h3>
                 <button class="modal-close" onclick="closeModal('regModal')">&times;</button>
             </div>
             <div class="modal-body">
                 <form id="registrationForm" onsubmit="handleRegistrationSubmit(event)">
                     <input type="hidden" id="regTournamentId">
                     <div class="form-group">
-                        <label class="form-label">Tournament</label>
-                        <input type="text" id="regTournamentTitle" class="form-control" readonly>
+                        <label class="form-label">Select Tournament *</label>
+                        <select id="regTournamentSelect" class="form-control" required onchange="onRegistrationTourneyChange(this.value)">
+                            <!-- Populated dynamically via JS -->
+                        </select>
                     </div>
+
                     <div class="form-grid-2">
                         <div class="form-group">
-                            <label class="form-label">Team Name *</label>
-                            <input type="text" id="regTeamName" class="form-control" required placeholder="e.g. Phoenix Gaming">
+                            <label class="form-label">Applicant Full Name *</label>
+                            <input type="text" id="regFullName" class="form-control" required placeholder="e.g. Aarav Patel">
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Captain Name *</label>
-                            <input type="text" id="regCaptainName" class="form-control" required placeholder="e.g. Aarav Patel">
+                            <label class="form-label">Mobile Number *</label>
+                            <input type="tel" id="regPhone" class="form-control" required placeholder="10-digit mobile number (e.g. 9876543210)">
                         </div>
                     </div>
+
                     <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Phone Number *</label>
-                            <input type="tel" id="regPhone" class="form-control" required placeholder="+91 98765 43210">
-                        </div>
                         <div class="form-group">
                             <label class="form-label">Email Address *</label>
-                            <input type="email" id="regEmail" class="form-control" required placeholder="captain@email.com">
+                            <input type="email" id="regEmail" class="form-control" required placeholder="applicant@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Free Fire / Game UID *</label>
+                            <input type="text" id="regGameUid" class="form-control" required placeholder="e.g. 98124712">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Player 1 (In-Game Name & UID) *</label>
-                        <input type="text" id="regPlayer1" class="form-control" required placeholder="Name (UID: 12345678)">
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">In-Game Name (IGN) *</label>
+                            <input type="text" id="regIgn" class="form-control" required placeholder="e.g. OP_Viper">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Team Name *</label>
+                            <input type="text" id="regTeamName" class="form-control" required placeholder="e.g. Phoenix Warriors">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Player 2 (In-Game Name & UID) *</label>
-                        <input type="text" id="regPlayer2" class="form-control" required placeholder="Name (UID: 12345678)">
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Team Captain Name *</label>
+                            <input type="text" id="regCaptainName" class="form-control" required placeholder="e.g. Aarav Patel">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Number of Players</label>
+                            <input type="number" id="regPlayerCount" class="form-control" value="4" min="4" max="5" readonly>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Player 3 (In-Game Name & UID) *</label>
-                        <input type="text" id="regPlayer3" class="form-control" required placeholder="Name (UID: 12345678)">
+
+                    <div style="background: rgba(0, 229, 255, 0.05); border: 1px solid var(--border-color); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 18px;">
+                        <h4 style="font-family: var(--font-heading); color: var(--cyan-highlight); font-size: 1rem; margin-bottom: 10px;"><i class="fa-solid fa-users"></i> SQUAD PLAYERS DETAILS</h4>
+                        <div class="form-group">
+                            <label class="form-label">Player 1 Details (In-Game Name & Game UID) *</label>
+                            <input type="text" id="regPlayer1" class="form-control" required placeholder="Player 1 IGN (UID: 12345678)">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Player 2 Details (In-Game Name & Game UID) *</label>
+                            <input type="text" id="regPlayer2" class="form-control" required placeholder="Player 2 IGN (UID: 12345678)">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Player 3 Details (In-Game Name & Game UID) *</label>
+                            <input type="text" id="regPlayer3" class="form-control" required placeholder="Player 3 IGN (UID: 12345678)">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Player 4 Details (In-Game Name & Game UID) *</label>
+                            <input type="text" id="regPlayer4" class="form-control" required placeholder="Player 4 IGN (UID: 12345678)">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Substitute Player (Optional)</label>
+                            <input type="text" id="regSub" class="form-control" placeholder="Sub IGN (UID: 12345678)">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Player 4 (In-Game Name & UID) *</label>
-                        <input type="text" id="regPlayer4" class="form-control" required placeholder="Name (UID: 12345678)">
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Optional Alternate Contact (Discord / Phone)</label>
+                            <input type="text" id="regAltContact" class="form-control" placeholder="Discord Tag / Secondary Mobile">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Additional Info / Notes (Optional)</label>
+                            <input type="text" id="regAdditionalInfo" class="form-control" placeholder="e.g. Team background or notes">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Substitute Player (Optional)</label>
-                        <input type="text" id="regSub" class="form-control" placeholder="Name (UID: 12345678)">
+
+                    <div class="form-group" style="margin-top: 10px; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: 0.9rem; cursor: pointer;">
+                            <input type="checkbox" id="regAgreeTerms" required style="width: 18px; height: 18px; accent-color: var(--primary-accent);">
+                            <span>I confirm that all provided player details are valid and agree to IDFC Esports tournament rules. *</span>
+                        </label>
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Submit Registration</button>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 14px;"><i class="fa-solid fa-paper-plane"></i> SUBMIT REGISTRATION</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1.5 CHECK REGISTRATION STATUS MODAL -->
+    <div class="modal-overlay" id="checkRegModal">
+        <div class="modal-container" style="max-width: 560px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-magnifying-glass"></i> Check Registration Status</h3>
+                <button class="modal-close" onclick="closeModal('checkRegModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px;">Enter your unique Registration Reference ID below to check your team's live review status.</p>
+                <form onsubmit="handleCheckRegistrationSearch(event)">
+                    <div class="form-group">
+                        <label class="form-label">Registration Reference ID *</label>
+                        <input type="text" id="checkRegIdInput" class="form-control" required placeholder="e.g. REG-1001">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;"><i class="fa-solid fa-magnifying-glass"></i> Check Status</button>
+                </form>
+                <div id="checkRegResultContainer" style="margin-top: 20px;"></div>
             </div>
         </div>
     </div>
@@ -502,24 +621,76 @@
     <div class="modal-overlay" id="adminLoginModal">
         <div class="modal-container" style="max-width: 440px;">
             <div class="modal-header">
-                <h3 class="modal-title"><i class="fa-solid fa-lock"></i> Admin Portal Login</h3>
+                <h3 class="modal-title"><i class="fa-solid fa-lock"></i> Admin Portal Access</h3>
                 <button class="modal-close" onclick="closeModal('adminLoginModal')">&times;</button>
             </div>
             <div class="modal-body">
-                <div style="background: rgba(255, 136, 0, 0.12); border: 1px solid var(--secondary); padding: 14px; border-radius: var(--radius-sm); margin-bottom: 22px; text-align: center; font-size: 0.9rem;">
-                    <strong>Demo Admin Credentials:</strong><br>
-                    Username: <code style="color: var(--gold);">admin</code> | Password: <code style="color: var(--gold);">admin123</code>
-                </div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; text-align: center;">Enter system administrator credentials to manage platform data.<br>Demo Admin: <code>admin@idfc-tournament.com</code> / <code>IDFC@Admin123</code></p>
                 <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
                     <div class="form-group">
-                        <label class="form-label">Username</label>
-                        <input type="text" id="adminUsername" class="form-control" required value="admin">
+                        <label class="form-label">Admin Username / Email</label>
+                        <input type="text" id="adminUsername" class="form-control" required placeholder="admin@idfc-tournament.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Admin Password</label>
+                        <input type="password" id="adminPassword" class="form-control" required placeholder="IDFC@Admin123">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login to Admin Panel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2.5 PLAYER LOGIN MODAL -->
+    <div class="modal-overlay" id="playerAuthModal">
+        <div class="modal-container" style="max-width: 440px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-user"></i> Player Login</h3>
+                <button class="modal-close" onclick="closeModal('playerAuthModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; text-align: center;">Log in to access your enrolled tournaments & room passwords.<br>Demo Player: <code>player@idfc-tournament.com</code> / <code>Player@123</code></p>
+                <form id="playerLoginForm" onsubmit="handlePlayerLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Player Email Address</label>
+                        <input type="email" id="playerEmail" class="form-control" required placeholder="player@idfc-tournament.com">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Password</label>
-                        <input type="password" id="adminPassword" class="form-control" required value="admin123">
+                        <input type="password" id="playerPassword" class="form-control" required placeholder="Player@123">
                     </div>
-                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login to Admin Panel</button>
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Login as Player</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- PUBLIC SUPPORT / CONTACT MODAL -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-container" style="max-width: 520px;">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-headset"></i> Contact Support</h3>
+                <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="publicContactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Your Name *</label>
+                        <input type="text" id="contactName" class="form-control" required placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" id="contactEmail" class="form-control" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Subject *</label>
+                        <input type="text" id="contactSubject" class="form-control" required placeholder="e.g. Tournament Registration Query">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message *</label>
+                        <textarea id="contactMessage" class="form-control" rows="4" required placeholder="Type your message or feedback here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
                 </form>
             </div>
         </div>
@@ -535,7 +706,7 @@
             <div class="modal-body">
                 <div class="search-input-wrap" style="max-width: 100%; margin-bottom: 22px;">
                     <i class="fa-solid fa-magnifying-glass search-icon-inside"></i>
-                    <input type="text" id="globalSearchInput" placeholder="Search teams, players, tournaments, news..." oninput="handleGlobalSearch(this.value)">
+                    <input type="text" id="globalSearchInput" placeholder="Search tournaments, matches, leaderboard..." oninput="handleGlobalSearch(this.value)">
                 </div>
                 <div id="globalSearchResults" style="max-height: 400px; overflow-y: auto;">
                     <p style="text-align: center; color: var(--text-muted);">Type at least 2 characters to search...</p>
