@@ -74,3 +74,4 @@ To access the Admin Panel:
 ---
 
 © 2026 IDFC Esports. All Rights Reserved.
+# idfc-tourni
